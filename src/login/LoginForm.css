@@ -1,0 +1,11 @@
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 99vh;
+}
+
+label {
+    margin-bottom: 10px;
+}
