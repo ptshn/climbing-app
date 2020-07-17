@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import SetGuide from '../setguide/SetGuide';
 
@@ -46,37 +46,80 @@ const NumberDiv = styled.span`
     right: 0;
 `;
 
+const RandomizeButton = styled.button`
+    background-color: #87CEEB;
+    height: 25px;
+    width: 100px;
+`;
+
 // #endregion
 
 const Grid = props => {
-    const [hoveredNumber, setHoveredNumber] = useState(null);
-
-    const cellTotal = [];
     const excludeNumberList = [13, 39, 65, 91, 117, 143, 157, 159, 161, 163, 165, 167, 169];
 
-    const firstHalf = [];
-    const secondHalf = [];
+    const [staticBoltNumbers, setStaticBoltNumbers] = useState([]);
+    const [randomizedBoltNumbers, setRandomizedBoltNumbers] = useState([]);
+    const [firstHalfDiv, setFirstHalfDiv] = useState([]);
+    const [secondHalfDiv, setSecondHalfDiv] = useState([]);
+    const [hoveredNumber, setHoveredNumber] = useState(null);
 
-    for (let i = 1; i <= 169; i++) {
-        cellTotal.push(i);
-    }
+    useEffect(() => {
+        const totalBoltList = [];
+        const firstHalf = [];
+        const secondHalf = [];
 
-    const boltNumbers = cellTotal.filter(num => num % 2 !== 0).filter(num => !excludeNumberList.includes(num))
-
-    for (let i = 0; i < boltNumbers.length; i++) {
-        if (i < boltNumbers.length / 2) {
-            firstHalf.push(boltNumbers[i]);
-        } else {
-            secondHalf.push(boltNumbers[i]);
+        for (let i = 1; i <= 169; i++) {
+            totalBoltList.push(i);
         }
+
+        const boltNumbers = totalBoltList.filter(num => num % 2 !== 0).filter(num => !excludeNumberList.includes(num));
+        
+        for (let i = 0; i < boltNumbers.length; i++) {
+            if (i < boltNumbers.length / 2) {
+                firstHalf.push(boltNumbers[i]);
+            } else {
+                secondHalf.push(boltNumbers[i]);
+            }
+        }
+
+        setRandomizedBoltNumbers(boltNumbers);
+        setStaticBoltNumbers(totalBoltList);
+        setFirstHalfDiv(firstHalf);
+        setSecondHalfDiv(secondHalf);
+    }, []);
+
+    const splitArray = numbersList => {
+        const firstHalf = [];
+        const secondHalf = [];
+
+        for (let i = 0; i < numbersList.length; i++) {
+            if (i < numbersList.length / 2) {
+                firstHalf.push(numbersList[i]);
+            } else {
+                secondHalf.push(numbersList[i]);
+            }
+        }
+
+        setFirstHalfDiv(firstHalf);
+        setSecondHalfDiv(secondHalf);
     }
 
     const mouseOverHandler = num => {
-        console.log(num);
         setHoveredNumber(num);
     }
+    
+    const randomizeBtnHandler = () => {
+        const staticArrayCopy = [...randomizedBoltNumbers]
 
-    const boltHole = cellTotal.map(num => {
+        for (let i = staticArrayCopy.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i +1));
+            [staticArrayCopy[i], staticArrayCopy[j]] = [staticArrayCopy[j], staticArrayCopy[i]]
+        }
+        
+        splitArray(staticArrayCopy);
+    }
+
+    const boltHole = staticBoltNumbers.map(num => {
         return (
             <ContentDiv key={num}>
                 {excludeNumberList.indexOf(num) === -1 ?
@@ -92,13 +135,14 @@ const Grid = props => {
                 }
             </ContentDiv>
         );
-    })
+    });
 
     return (
         <Frame>
+            <RandomizeButton onClick={randomizeBtnHandler}>Randomize</RandomizeButton>
             <SetGuide
-                firstHalf={firstHalf}
-                secondHalf={secondHalf}
+                firstHalf={firstHalfDiv}
+                secondHalf={secondHalfDiv}
                 mouseOverHandler={mouseOverHandler}
             />
             <Panel>

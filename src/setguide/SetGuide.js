@@ -43,7 +43,10 @@ const SetGuide = ({ firstHalf, secondHalf, mouseOverHandler }) => {
                 <SetList>
                     {secondHalf.map(num => {
                         return (
-                            <li key={num}>
+                            <li 
+                                key={num}
+                                onMouseEnter={() => mouseOverHandler(num)}
+                                onMouseLeave={() => mouseOverHandler(null)}>
                                 {num}
                             </li>
                         )
