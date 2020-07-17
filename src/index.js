@@ -3,13 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { MovieProvider } from './MovieContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <MovieProvider>
       <App />
-    </MovieProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
