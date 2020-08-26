@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import holdsInput from './holdsInput';
-import grid from './grid';
+import inputNewHolds from './inputNewHolds';
+import addWallNumbers from './addWallNumbers';
+import setNavMenuBool from './setNavMenuBool';
 
 export default combineReducers({
-    holdsInput,
-    grid
+    inputNewHolds,
+    addWallNumbers,
+    setNavMenuBool
 });

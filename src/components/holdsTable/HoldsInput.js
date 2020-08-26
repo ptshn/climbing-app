@@ -19,7 +19,6 @@ const HoldsForm = props => {
         history.push('/main');
     }
 
-
     return (
         <InputDiv>
             <Text size={'1.5rem'}>Input</Text>
@@ -81,7 +80,7 @@ const HoldsForm = props => {
 }
 
 const mapStateToProps = state => ({
-    holds: state.holdsInput.holds
+    holds: state.inputNewHolds.holds
 })
 
 const mapDispatchToProps = {

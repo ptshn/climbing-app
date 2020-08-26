@@ -1,6 +1,6 @@
 import React from 'react';
 import HoldsInventoryList from '../components/holdsTable/HoldsOutput';
-import ClimbingWallGrid from '../components/climbingWall/Grid';
+import ClimbingWallGrid from '../components/climbingWall/WallGrid';
 import { Container } from './StylesMainView';
 
 const MainView = () => {

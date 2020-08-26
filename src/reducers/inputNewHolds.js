@@ -1,4 +1,4 @@
-const holdsInput = (state = {}, action) => {
+const inputNewHolds = (state = {}, action) => {
     switch (action.type) {
         case 'ADD_HOLDS':
             return { ...state, holds: action.payload }
@@ -7,4 +7,4 @@ const holdsInput = (state = {}, action) => {
     }
 };
 
-export default holdsInput;
+export default inputNewHolds;

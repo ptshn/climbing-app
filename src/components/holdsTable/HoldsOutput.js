@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addSlicedBoltNums } from '../../actions/actions';
+import { addSliceBoltArr } from '../../actions/actions';
 import { FormContainer, InputDiv, Text, Table, TableRow, TableData, SubmitButton } from './StylesHoldsOutput';
 
 const HoldsOutput = props => {
     const handleClick = () => {
-        const staticArrayCopy = [...props.grid.rando];
-        // console.log(staticArrayCopy)
+        const staticArrayCopy = [...props.wallNumbers.staticBoltArr];
+        
         for (let i = staticArrayCopy.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i +1));
             [staticArrayCopy[i], staticArrayCopy[j]] = [staticArrayCopy[j], staticArrayCopy[i]];
@@ -14,7 +14,7 @@ const HoldsOutput = props => {
         
         const sliceNumResults = sliceNumbersList(staticArrayCopy, 12);
         
-        props.addSlicedBoltNums(sliceNumResults);
+        props.addSliceBoltArr(sliceNumResults);
     }
 
     const sliceNumbersList = (numbersList, size) => {
@@ -70,12 +70,12 @@ const HoldsOutput = props => {
 
 
 const mapStateToProps = state => ({
-    holds: state.holdsInput.holds,
-    grid: state.grid
+    holds: state.inputNewHolds.holds,
+    wallNumbers: state.addWallNumbers
 });
 
 const mapDispatchToProps = {
-    addSlicedBoltNums
+    addSliceBoltArr
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HoldsOutput);
