@@ -1,56 +1,46 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { SetListParent, SetList, PTag, ResultPill } from './SetList.styled';
+import { SetListContainer, SetListParent, SetList, ResultPill } from './SetList.styled';
 import SetButton from './SetButton';
+import { setHoverNum } from '../../actions/actions';
 
-const SetGuide = ({ wallNumbers, mouseOverHandler }) => {
+const SetGuide = ({ wallNumbers, setHoverNum }) => {
     return (
-        <div style={ { display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'  }}>
+        <SetListContainer>
 
-        
-        <SetListParent>
-            <SetList>
-                {wallNumbers.map(set => {
-                    return (
-                        <>
-                            {set.map(child => {
-                                return (
-                                    <ResultPill key={child}>
-                                        {/* <PTag> */}
-                                            {child} / jug / 45
-                                        {/* </PTag> */}
-                                    </ResultPill>
-                                )
-                            })}
-                        </>
-                    )
-                })}
+            <SetListParent>
+                <SetList>
+                    {wallNumbers.map(set => {
+                        return (
+                            <Fragment key={set}>
+                                {set.map(num => {
+                                    return (
+                                        <ResultPill
+                                            key={num}
+                                            onMouseEnter={() => setHoverNum(num)}
+                                            onMouseLeave={() => setHoverNum(null)}
+                                        >
+                                            {num} / jug / 45
+                                        </ResultPill>
+                                    )
+                                })}
+                            </Fragment>
+                        )
+                    })}
                 </SetList>
-            
-        </SetListParent>
-        <SetButton />
-        </div>
+            </SetListParent>
+            <SetButton />
+        </SetListContainer>
     );
 }
-            //     {/* <SetListChild>
-            //     <SetList>
-            //         {firstHalf.map(num => {
-            //             return (
-            //                 <li 
-            //                     key={num}
-            //                     onMouseEnter={() => mouseOverHandler(num)}
-            //                     onMouseLeave={() => mouseOverHandler(null)}>
-            //                     {num}
-            //                 </li>
-            //             )
-            //         })}
-            //     </SetList>
-            // </SetListChild> */}
-            
-    
+
 
 const mapStateToProps = state => ({
     wallNumbers: state.addWallNumbers.sliceBoltArr
 })
 
-export default connect(mapStateToProps)(SetGuide);
+const mapDispatchToProps = {
+    setHoverNum
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SetGuide);

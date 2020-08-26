@@ -6,8 +6,7 @@ import { Frame, Panel, GridContainer, ContentDiv, NumberDiv } from './StylesWall
 const WallGrid = props => {
     const excludeNumberList = [13, 39, 65, 91, 117, 143, 157, 159, 161, 163, 165, 167, 169];
     const [staticBoltNumbers, setStaticBoltNumbers] = useState([]);
-    const [hoveredNumber, setHoveredNumber] = useState(null);
-
+    
     useEffect(() => {
         const totalBoltList = [];
 
@@ -19,20 +18,15 @@ const WallGrid = props => {
 
         props.addStaticBoltNums(boltNumbers);
         setStaticBoltNumbers(totalBoltList);
-        
     }, []);
-
-    const mouseOverHandler = num => {
-        setHoveredNumber(num);
-    }
 
     const staticWallBoltNums = staticBoltNumbers.map(num => {
         return (
             <ContentDiv key={num}>
                 {excludeNumberList.indexOf(num) === -1 ?
                     <NumberDiv>
-                        {hoveredNumber === num ? 
-                            <p style={{ color: 'red', fontWeight: 'bold' }}>{num}</p>
+                        {props.hoverNumber === num ? 
+                            <p style={{ color: 'red', fontWeight: 'bold', fontSize: '25px' }}>{num}</p>
                             :
                             <p>{num}</p>
                         }
@@ -56,7 +50,8 @@ const WallGrid = props => {
 }
 
 const mapStateToProps = state => ({
-    wallNumbers: state.addWallNumbers
+    wallNumbers: state.addWallNumbers,
+    hoverNumber: state.setHoverNumber.selected
 })
 
 const mapDispatchToProps = {
