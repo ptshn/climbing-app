@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { addStaticBoltNums } from '../../actions/actions';
 import { Frame, Panel, GridContainer, ContentDiv, NumberDiv } from './StylesWallGrid';
-import SetGuide from '../setguide/SetGuide';
 
 const WallGrid = props => {
     const excludeNumberList = [13, 39, 65, 91, 117, 143, 157, 159, 161, 163, 165, 167, 169];
@@ -52,10 +51,6 @@ const WallGrid = props => {
                     {staticWallBoltNums}
                 </GridContainer>
             </Panel>
-            <SetGuide
-                randomizedNumList={props.wallNumbers.sliceBoltArr}
-                mouseOverHandler={mouseOverHandler}
-            />
         </Frame>
     );
 }

@@ -49,3 +49,8 @@ export const StyledMenu = styled.nav`
     }
   }
 `;
+
+export const MenuIconImg = styled.img`
+  height: 33px;
+  width: 33px;
+`;

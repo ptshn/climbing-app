@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyledMenu } from './StylesMenu';
+import { StyledMenu, MenuIconImg } from './StylesMenu';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import plus from '../../images/add.svg';
 import drill from '../../images/drill.svg';
-// import inventory from '../../images/number.svg';
+import inventory from '../../images/number.svg';
 
 const Menu = props => {
     return (
@@ -20,11 +20,11 @@ const Menu = props => {
                             <img src={drill} alt='climb' />
                         </span>Set Wall
                 </Link>
-                {/* <Link to='/main'>
+                <Link to='/inventory'>
                     <span role="img" aria-label="inventory">
-                            <img src={inventory} alt='inventory' />
+                            <MenuIconImg src={inventory} alt='inventory' />
                         </span>Inventory
-                </Link> */}
+                </Link>
             </div>
         </StyledMenu>
     )

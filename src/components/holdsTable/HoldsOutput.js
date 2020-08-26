@@ -1,31 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addSliceBoltArr } from '../../actions/actions';
-import { FormContainer, InputDiv, Text, Table, TableRow, TableData, SubmitButton } from './StylesHoldsOutput';
+import { FormContainer, InputDiv, Text, Table, TableRow, TableData } from './StylesHoldsOutput';
 
 const HoldsOutput = props => {
-    const handleClick = () => {
-        const staticArrayCopy = [...props.wallNumbers.staticBoltArr];
-        
-        for (let i = staticArrayCopy.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i +1));
-            [staticArrayCopy[i], staticArrayCopy[j]] = [staticArrayCopy[j], staticArrayCopy[i]];
-        }
-        
-        const sliceNumResults = sliceNumbersList(staticArrayCopy, 12);
-        
-        props.addSliceBoltArr(sliceNumResults);
-    }
-
-    const sliceNumbersList = (numbersList, size) => {
-        const results = [];
-
-        for (let i = 0; i < numbersList.length; i+= size) {
-            results.push(numbersList.slice(i, i+size));
-        }
-        return results;
-    }
-
     return (
         <FormContainer>
             <InputDiv>
@@ -62,7 +39,6 @@ const HoldsOutput = props => {
                         </TableRow>
                     </tbody>
                 </Table>
-                <SubmitButton onClick={handleClick}>Randomize</SubmitButton>
             </InputDiv>
         </FormContainer>
     );
@@ -74,8 +50,4 @@ const mapStateToProps = state => ({
     wallNumbers: state.addWallNumbers
 });
 
-const mapDispatchToProps = {
-    addSliceBoltArr
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(HoldsOutput);
+export default connect(mapStateToProps)(HoldsOutput);

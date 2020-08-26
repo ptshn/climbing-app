@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import reducer from './reducers/index';
 import MainView from './containers/MainView';
 import HoldsInputView from './containers/HoldsInputView';
+import InventoryView from './containers/InventoryView';
 import Hamburger from './components/navigation/Hamburger';
 import Menu from './components/navigation/Menu';
 
@@ -18,6 +19,7 @@ const App = props => (
       <Switch>
         <Route path='/' component={HoldsInputView} exact />
         <Route path='/main' component={MainView} exact />
+        <Route path='/inventory' component={InventoryView} exact />
       </Switch>
     </Provider>
   </div>

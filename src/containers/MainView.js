@@ -1,13 +1,14 @@
 import React from 'react';
-import HoldsInventoryList from '../components/holdsTable/HoldsOutput';
+import { Container } from './Mainview.styled';
+import SetList from '../components/setList/SetList';
 import ClimbingWallGrid from '../components/climbingWall/WallGrid';
-import { Container } from './StylesMainView';
+
 
 const MainView = () => {
     return (
         <Container>
-            <HoldsInventoryList />
             <ClimbingWallGrid />
+            <SetList />
         </Container>
     );
 }
