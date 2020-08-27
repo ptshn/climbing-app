@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { addHolds } from '../../actions/actions';
 import { InputDiv, Text, Table, TableRow, TableData, Input, SubmitButton } from './StylesHoldsInput';
@@ -10,13 +11,16 @@ const HoldsForm = props => {
 
     const handleChange = event => {
         const { name, value } = event.target;
-        holdsQuantity[name] = value;
+        holdsQuantity[name] = parseInt(value);
         setHoldsQuantity({ ...holdsQuantity });
     }
 
     const handleClick = () => {
         props.addHolds(holdsQuantity);
         history.push('/main');
+
+        axios.post('http://localhost:5000/holds/add', holdsQuantity)
+            .then(res => console.log(res.data));
     }
 
     return (

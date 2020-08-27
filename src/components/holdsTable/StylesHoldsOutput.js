@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
 export const FormContainer = styled.div`
+    height: 100vh;
+    width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 `;
 
 export const InputDiv = styled.div`
     height: 500px;
-    width: 350px;
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -22,11 +26,11 @@ export const Text = styled.p`
 `;
 
 export const Table = styled.table`
-    border: 2px solid #E4E4E4;
+    /* border: 2px solid #E4E4E4; */
     border-radius: 10px;
     padding: 0 15px 5px;
     height: 400px;
-    width: 350px;
+    
 `;
 
 export const TableRow = styled.tr`
@@ -36,6 +40,7 @@ export const TableRow = styled.tr`
 export const TableData = styled.td`
     width: 10px;
     text-align: ${props => props.textAlign};
+    border: 1px solid #E4E4E4;
 `;
 
 export const SubmitButton = styled.button`

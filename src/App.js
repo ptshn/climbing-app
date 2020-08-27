@@ -16,11 +16,13 @@ const App = props => (
     <Provider store={store}>
       <Hamburger />
       <Menu />
-      <Switch>
-        <Route path='/' component={HoldsInputView} exact />
-        <Route path='/main' component={MainView} exact />
-        <Route path='/inventory' component={InventoryView} exact />
-      </Switch>
+      {/* <Router> */}
+        <Switch>
+          <Route path='/' component={HoldsInputView} exact />
+          <Route path='/main' component={MainView} exact />
+          <Route path='/inventory' component={InventoryView} exact />
+        </Switch>
+      {/* </Router> */}
     </Provider>
   </div>
 )

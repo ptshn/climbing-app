@@ -17,7 +17,7 @@ export const SetListParent = styled.div`
 
 export const SetList = styled.div`
     flex: 1;
-    font-size: 12px;
+    font-size: 14px;
 `;
 
 export const PTag = styled.p`
