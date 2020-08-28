@@ -26,11 +26,9 @@ export const Text = styled.p`
 `;
 
 export const Table = styled.table`
-    /* border: 2px solid #E4E4E4; */
     border-radius: 10px;
     padding: 0 15px 5px;
     height: 400px;
-    
 `;
 
 export const TableRow = styled.tr`
@@ -41,6 +39,7 @@ export const TableData = styled.td`
     width: 10px;
     text-align: ${props => props.textAlign};
     border: 1px solid #E4E4E4;
+    background: ${props => props.background};
 `;
 
 export const SubmitButton = styled.button`
@@ -54,3 +53,18 @@ export const SubmitButton = styled.button`
     margin-left: 250px;
     cursor: pointer;
 `;
+
+export const ActionSpan = styled.span`
+    cursor: pointer;
+    background-color: ${props => props.background};
+    border: none;
+    color: black;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    border-radius: 16px;
+    font-size: 14px;
+
+`
