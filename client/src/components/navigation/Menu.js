@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { StyledMenu, MenuIconImg } from './StylesMenu';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import plus from '../../images/add.svg';
 import drill from '../../images/drill.svg';
 import inventory from '../../images/number.svg';
+import { useOnClickOutside } from '../../hooks';
+import { setNavMenuBool } from '../../actions/actions';
 
 const Menu = props => {
+    // const node = useRef();
+    // useOnClickOutside(node, () => props.setNavMenuBool(false));
+
     return (
         <StyledMenu open={props.open}>
             <div>
@@ -34,4 +39,9 @@ const mapStateToProps = state => ({
     open: state.setNavMenuBool
 });
 
-export default connect(mapStateToProps)(Menu);
+
+const mapDispatchToProps = {
+    setNavMenuBool
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

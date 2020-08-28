@@ -52,13 +52,14 @@ export const Input = styled.input`
 `;
 
 export const SubmitButton = styled.button`
-    color: white;
+    color: #34395B;
     border-radius: 3px;
     border: none;
-    background: #0BB81B;
+    background: #A4C1D4;
     height: 40px;
     width: 80px;
     font-size: 18px;
     margin-left: 250px;
     cursor: pointer;
+    font-weight: bold;
 `;

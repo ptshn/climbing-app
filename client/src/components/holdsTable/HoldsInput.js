@@ -25,7 +25,7 @@ const HoldsForm = props => {
 
     return (
         <InputDiv>
-            <Text size={'1.5rem'}>Input</Text>
+            <Text size={'1.5rem'}>Add New Holds</Text>
             <Table>
                 <tbody>
                     <TableRow>

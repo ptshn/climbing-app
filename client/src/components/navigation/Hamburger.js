@@ -8,7 +8,7 @@ const Hamburger = props => {
         props.setNavMenuBool(!props.open);
     }
     return (
-        <StyledBurger onClick={handleClick}>
+        <StyledBurger open={props.open} onClick={handleClick}>
             <div />
             <div />
             <div />

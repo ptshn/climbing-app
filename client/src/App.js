@@ -6,25 +6,26 @@ import reducer from './reducers/index';
 import MainView from './containers/MainView';
 import HoldsInputView from './containers/HoldsInputView';
 import InventoryView from './containers/InventoryView';
-import Hamburger from './components/navigation/Hamburger';
-import Menu from './components/navigation/Menu';
+import SiteHeader from './components/navigation/SiteHeader';
+import NavigationView from './containers/NavigationView';
 
 const store = createStore(reducer);
 
-const App = props => (
+const App = props => {
+  return (
   <div>
     <Provider store={store}>
-      <Hamburger />
-      <Menu />
-      {/* <Router> */}
+      <NavigationView />
+      <SiteHeader />
         <Switch>
           <Route path='/' component={HoldsInputView} exact />
           <Route path='/main' component={MainView} exact />
           <Route path='/inventory' component={InventoryView} exact />
         </Switch>
-      {/* </Router> */}
     </Provider>
   </div>
-)
+  )
+    }
+
 
 export default App;
