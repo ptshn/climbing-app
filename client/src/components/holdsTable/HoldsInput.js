@@ -19,7 +19,7 @@ const HoldsForm = props => {
         props.addHolds(holdsQuantity);
         history.push('/inventory');
 
-        axios.post('http://localhost:5000/holds/add', holdsQuantity)
+        axios.post('/holds/add', holdsQuantity)
             .then(res => console.log(res.data));
     }
 

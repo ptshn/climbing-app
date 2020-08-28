@@ -19,7 +19,7 @@ const HoldsOutput = props => {
     const history = useHistory();
 
     useEffect(() => {
-        axios.get('http://localhost:5000/holds/')
+        axios.get('/holds')
             .then(res => {
                 console.log(res.data)
                 setHolds(res.data);
@@ -31,7 +31,7 @@ const HoldsOutput = props => {
     }, [])
 
     const deleteHandleClick = holdId => {
-        axios.delete(`http://localhost:5000/holds/${holdId}`)
+        axios.delete(`/holds/${holdId}`)
             .then(res => console.log(res.data));
 
         setHolds(holds.filter(el => el._id !== holdId));
@@ -53,7 +53,7 @@ const HoldsOutput = props => {
         setHolds(holds);
         setUpdatedHold({ jugs: '', crimps: '', slopers: '', pinches: '' });
 
-        axios.post(`http://localhost:5000/holds/update/${holdId}`, updatedHold)
+        axios.post(`/holds/update/${holdId}`, updatedHold)
             .then(res => console.log(res.data));
 
     }
