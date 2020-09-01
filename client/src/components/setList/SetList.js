@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { SetListContainer, SetListParent, SetList, ResultPill } from './SetList.styled';
 import SetButton from './SetButton';
@@ -7,24 +7,18 @@ import { setHoverNum } from '../../actions/actions';
 const SetGuide = ({ wallNumbers, setHoverNum }) => {
     return (
         <SetListContainer>
-
             <SetListParent>
                 <SetList>
-                    {wallNumbers.map(set => {
+                    {wallNumbers.map((set, index) => {
                         return (
-                            <Fragment key={set}>
-                                {set.map(num => {
-                                    return (
-                                        <ResultPill
-                                            key={num}
-                                            onMouseEnter={() => setHoverNum(num)}
-                                            onMouseLeave={() => setHoverNum(null)}
-                                        >
-                                            {num} / jug / 45
-                                        </ResultPill>
-                                    )
-                                })}
-                            </Fragment>
+                            <ResultPill
+                                key={index}
+                                onMouseEnter={() => setHoverNum(set.num)}
+                                onMouseLeave={() => setHoverNum(null)}
+                            >
+                                {set.num} | {set.hold} | {set.deg}&#176;
+                            </ResultPill>
+
                         )
                     })}
                 </SetList>

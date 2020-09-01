@@ -5,29 +5,43 @@ import { SubmitButton } from './SetButton.styled';
 
 const SetButton = props => {
     const handleClick = () => {
-        const staticArrayCopy = [...props.wallNumbers.staticBoltArr];
+        const newWallSet = [];
 
-        for (let i = staticArrayCopy.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [staticArrayCopy[i], staticArrayCopy[j]] = [staticArrayCopy[j], staticArrayCopy[i]];
+        const staticArrayCopy = [...props.wallNumbers.staticBoltArr];
+        const holds = ['jug', 'crimp', 'sloper', 'pinch']
+
+        const randomNumbersArray = shuffleNumberArray(staticArrayCopy);
+
+        for (let i = 0; i < randomNumbersArray.length; i++) {
+            let obj = {};
+
+            const randomHoldIndex = randomArrayIndex(holds.length);
+            const randomAngleIndex = randomArrayIndex(360);
+
+            obj['num'] = randomNumbersArray[i];
+            obj['hold'] = holds[randomHoldIndex];
+            obj['deg'] = randomAngleIndex;
+
+            newWallSet.push(obj);
         }
 
-        const sliceNumResults = sliceNumbersList(staticArrayCopy, 2);
-
-        props.addSliceBoltArr(sliceNumResults);
+        props.addSliceBoltArr(newWallSet);
     }
 
-    const sliceNumbersList = (numbersList, size) => {
-        const results = [];
-
-        for (let i = 0; i < numbersList.length; i += size) {
-            results.push(numbersList.slice(i, i + size));
+    const shuffleNumberArray = numberArr => {
+        for (let i = numberArr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [numberArr[i], numberArr[j]] = [numberArr[j], numberArr[i]];
         }
-        return results;
+        return numberArr;
+    }
+
+    const randomArrayIndex = arrLength => {
+        return Math.floor(Math.random() * arrLength);
     }
 
     return (
-        <SubmitButton onClick={handleClick}>New Set</SubmitButton>
+        <SubmitButton onClick={handleClick}>New Sets</SubmitButton>
     );
 }
 
