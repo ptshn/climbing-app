@@ -11,7 +11,7 @@ export const SetListParent = styled.div`
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    width: 60%;
+    width: 80%;
     margin-top: 10px;
 `;
 
@@ -37,4 +37,5 @@ export const ResultPill = styled.div`
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 16px;
+    width: 130px;
 `;

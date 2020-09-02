@@ -12,8 +12,8 @@ export const StyledLegend = styled.div`
 `;
 
 export const Jug = styled.div`
-    height: 25px;
-    width: 35px;
+    height: 45px;
+    width: 45px;
     border-radius: 0 0 90px 90px;
     background: purple;
 `;

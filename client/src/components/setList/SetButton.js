@@ -41,7 +41,7 @@ const SetButton = props => {
     }
 
     return (
-        <SubmitButton onClick={handleClick}>New Sets</SubmitButton>
+        <SubmitButton onClick={handleClick}>New Set</SubmitButton>
     );
 }
 

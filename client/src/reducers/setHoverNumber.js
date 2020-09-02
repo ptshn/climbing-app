@@ -1,5 +1,5 @@
 const initialState = {
-    selected: 0
+    selected: []
 }
 
 const setHoverNumber = (state = initialState, action) => {
