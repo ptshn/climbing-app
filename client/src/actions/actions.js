@@ -3,6 +3,7 @@ export const ADD_STATIC_BOLT_NUMS = 'ADD_STATIC_BOLT_NUMS';
 export const ADD_SLICE_BOLT_ARR = 'ADD_SLICE_BOLT_ARR';
 export const SET_NAVMENU_BOOL = 'SET_NAVMENU_BOOL';
 export const SET_HOVER_NUMBER = 'SET_HOVER_NUMBER';
+export const SET_WALLFILTER_BOOL = 'SET_WALLFILTER_BOOL';
 
 export const addHolds = holds => ({
     type: ADD_HOLDS,
@@ -27,4 +28,9 @@ export const setNavMenuBool = bool => ({
 export const setHoverNum = number => ({
     type: SET_HOVER_NUMBER,
     payload: number
+});
+
+export const setWallFilterBool = bool => ({
+    type: SET_WALLFILTER_BOOL,
+    payload: bool
 });

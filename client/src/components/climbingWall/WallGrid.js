@@ -23,10 +23,6 @@ const WallGrid = props => {
         props.addStaticBoltNums(boltNumbers);
         setStaticBoltNumbers(totalBoltList);
     }, []);
-
-    const wallNumberHover = number => {
-        console.log(number);
-    }
     
     const staticWallBoltNums = staticBoltNumbers.map(num => {
         return (
@@ -39,19 +35,19 @@ const WallGrid = props => {
                                 {
                                     (()=> {
                                         if (props.selectedSet.hold === 'jug') {
-                                            return <img src={jug} style={{ height: '35px', width: '35px'}} />
+                                            return <img src={jug} alt='jug' style={{ height: '35px', width: '35px'}} />
                                         } else if (props.selectedSet.hold === 'crimp') {
-                                            return <img src={crimp} style={{ height: '35px', width: '35px'}} />
+                                            return <img src={crimp} alt='crimp' style={{ height: '35px', width: '35px'}} />
                                         } else if (props.selectedSet.hold === 'sloper') {
-                                            return <img src={sloper} style={{ height: '35px', width: '35px'}} />
+                                            return <img src={sloper} alt='sloper' style={{ height: '35px', width: '35px'}} />
                                         } else if (props.selectedSet.hold === 'pinch') {
-                                            return <img src={pinch} style={{ height: '35px', width: '35px'}} />
+                                            return <img src={pinch} alt='pinch' style={{ height: '35px', width: '35px'}} />
                                         }
                                     })()
                                 }
                             </>
                             :
-                            <p style={{ cursor: 'pointer' }}onClick={() => wallNumberHover(num)}>{num}</p>
+                            <p style={{ cursor: 'pointer' }}>{num}</p>
                         }
                     </NumberDiv>
                     :
@@ -61,11 +57,44 @@ const WallGrid = props => {
         );
     });
 
+    const filledWallBoltNums = staticBoltNumbers.map(num => {
+        return (
+            <ContentDiv key={num}>
+                {excludeNumberList.indexOf(num) === -1 ?
+                    <NumberDiv>
+                        {props.newSet.filter(obj => obj.num === num).map(foo => {
+                            return (
+                                <>
+                                {
+                                    (()=> {
+                                        if (foo.hold === 'jug') {
+                                            return <img src={jug} alt='jug' style={{ height: '30px', width: '30px'}} />
+                                        } else if (foo.hold === 'crimp') {
+                                            return <img src={crimp} alt='crimp' style={{ height: '30px', width: '30px'}} />
+                                        } else if (foo.hold === 'sloper') {
+                                            return <img src={sloper} alt='sloper' style={{ height: '30px', width: '30px'}} />
+                                        } else if (foo.hold === 'pinch') {
+                                            return <img src={pinch} alt='pinch' style={{ height: '30px', width: '30px'}} />
+                                        }
+                                    })()
+                                }
+                            </>
+                            )
+                        })
+                        }
+                    </NumberDiv>
+                    :
+                    null
+                }
+            </ContentDiv>
+        );
+    });
+    
     return (
         <Frame>
             <Panel>
                 <GridContainer>
-                    {staticWallBoltNums}
+                    {props.isChecked ? filledWallBoltNums : staticWallBoltNums}
                 </GridContainer>
             </Panel>
         </Frame>
@@ -74,7 +103,9 @@ const WallGrid = props => {
 
 const mapStateToProps = state => ({
     wallNumbers: state.addWallNumbers,
-    selectedSet: state.setHoverNumber.selected
+    selectedSet: state.setHoverNumber.selected,
+    newSet: state.addWallNumbers.sliceBoltArr,
+    isChecked: state.setWallFilterBool
 })
 
 const mapDispatchToProps = {

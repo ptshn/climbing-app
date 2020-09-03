@@ -1,34 +1,33 @@
 import styled from 'styled-components';
 
+//#region Wallgrid.js styled
 export const Frame = styled.div`
     display: flex;
     flex-direction: column;
-    /* flex: 1; */
     align-items: flex-end;
     margin-top: 25px;
-    /* border: 1px solid red; */
 `;
 
 export const Panel = styled.div`
-height: 400px;
-width: 800px;
-background-color: #E6BF83;
+    height: 400px;
+    width: 800px;
+    background-color: #E6BF83;
 `;
 
 export const GridContainer = styled.div`
-display: grid;
-grid-template-rows: 18px 33px 33px 33px 33px 33px 33px 33px 33px 33px 33px 33px 17px;
-grid-template-columns: 33px 67px 67px 67px 67px 67px 67px 67px 67px 67px 66px 66px 34px;
+    display: grid;
+    grid-template-rows: 18px 33px 33px 33px 33px 33px 33px 33px 33px 33px 33px 33px 17px;
+    grid-template-columns: 33px 67px 67px 67px 67px 67px 67px 67px 67px 67px 66px 66px 34px;
 `;
 
 export const ContentDiv = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
-&:nth-child(even) {
-    visibility: hidden;
+    &:nth-child(even) {
+        visibility: hidden;
 }
 `;
 
@@ -49,4 +48,22 @@ export const RandomizeButton = styled.button`
     background-color: #87CEEB;
     height: 25px;
     width: 100px;
+`;
+//#endregion
+
+//#region WallFilter.js styled
+export const FilterForm = styled.form`
+    position: absolute;
+    top: 200px;
+    left: 180px;
+`;
+
+export const Label = styled.label`
+    display: block;
+    clear: left;
+    font-weight: bold;
+`;
+
+export const InputCheckbox = styled.input`
+    float: left;
 `;
