@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledMenu = styled.nav`
   display: flex;
   flex-direction: column;
-  background: #A4C1D4;
+  background: #ffffff;
   height: 100vh;
   text-align: left;
   padding: 2rem;
@@ -12,15 +12,10 @@ export const StyledMenu = styled.nav`
   left: 0;
   transition: transform 0.3s ease-in-out;
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
+  z-index: 1;
   
   @media (max-width: ${({ theme }) => theme.mobile}) {
     width: 100%;
-  }
-
-  div {
-    display: flex;
-    flex-direction: column;
-    margin-top: 55px;
   }
 
   span {
@@ -35,7 +30,7 @@ export const StyledMenu = styled.nav`
     padding: 1rem 0;
     font-weight: bold;
     letter-spacing: 0.2rem;
-    color: #34395B;
+    color: #000000;
     text-decoration: none;
     transition: color 0.3s linear;
     
@@ -49,6 +44,12 @@ export const StyledMenu = styled.nav`
     }
   }
 `;
+
+export const NavDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 55px;
+`; 
 
 export const MenuIconImg = styled.img`
   height: 33px;

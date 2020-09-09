@@ -6,6 +6,9 @@ export const Frame = styled.div`
     flex-direction: column;
     align-items: flex-end;
     margin-top: 25px;
+    -webkit-box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.29);
+    -moz-box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.29);
+    box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.29);
 `;
 
 export const Panel = styled.div`

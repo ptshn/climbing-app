@@ -8,22 +8,27 @@ import HoldsInputView from './containers/HoldsInputView';
 import InventoryView from './containers/InventoryView';
 // import SiteHeader from './components/navigation/SiteHeader';
 import NavigationView from './containers/NavigationView';
+import LandingPageView from './containers/LandingPageView';
+import { GlobalStyles } from './global.styled';
+import LandingBackground from './components/landingPage/LandingBackground';
 
 const store = createStore(reducer);
 
 const App = props => {
   return (
-  <div>
+  <>
+    <GlobalStyles />
     <Provider store={store}>
       <NavigationView />
       {/* <SiteHeader /> */}
         <Switch>
-          <Route path='/' component={HoldsInputView} exact />
+          <Route path='/' component={LandingPageView} exact />
+          <Route path='/add' component={HoldsInputView} exact />
           <Route path='/main' component={MainView} exact />
           <Route path='/inventory' component={InventoryView} exact />
         </Switch>
     </Provider>
-  </div>
+  </>
   )
     }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledBurger } from './StylesHamburger';
+import { StyledBurger } from './Hamburger.styled';
 import { connect } from 'react-redux';
 import { setNavMenuBool } from '../../actions/actions';
 

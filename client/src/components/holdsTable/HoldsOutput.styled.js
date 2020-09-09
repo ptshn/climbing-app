@@ -4,16 +4,15 @@ export const FormContainer = styled.div`
     height: 100vh;
     width: 100%;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-evenly;
 `;
 
 export const InputDiv = styled.div`
-    height: 500px;
     width: 70%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    margin-top: 50px;
 `;
 
 export const Text = styled.p`
@@ -28,17 +27,23 @@ export const Text = styled.p`
 export const Table = styled.table`
     border-radius: 10px;
     padding: 0 15px 5px;
-    height: 400px;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: #fff;
+    -webkit-box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.29);
+    -moz-box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.29);
+    box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.29);
 `;
 
 export const TableRow = styled.tr`
     font-size: 1.5rem;
+    border: 1px solid;
 `;
 
 export const TableData = styled.td`
     width: 10px;
     text-align: ${props => props.textAlign};
-    border: 1px solid #E4E4E4;
+    border: none;
     background: ${props => props.background};
 `;
 
@@ -57,7 +62,7 @@ export const SubmitButton = styled.button`
 export const ActionSpan = styled.span`
     cursor: pointer;
     background-color: ${props => props.background};
-    border: none;
+    border: 2px solid;
     color: black;
     padding: 5px 5px;
     text-align: center;
@@ -67,4 +72,8 @@ export const ActionSpan = styled.span`
     border-radius: 16px;
     font-size: 14px;
 
+    &:hover {
+        /* background: ${props => props.delete ? '#D11A2A': "#FB9360"}; */
+        background: #fff;
+    }
 `

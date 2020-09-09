@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import { FormContainer, InputDiv, Text, Table, TableRow, TableData, ActionSpan } from './StylesHoldsOutput';
+import { FormContainer, InputDiv, Text, Table, TableRow, TableData, ActionSpan } from './HoldsOutput.styled';
 
 const HoldsOutput = props => {
     const [holds, setHolds] = useState([]);
@@ -38,7 +38,7 @@ const HoldsOutput = props => {
     }
 
     const addHandleClick = () => {
-        history.push('/');
+        history.push('/add');
     }
 
     const updateHandleClick = index => {
@@ -70,7 +70,7 @@ const HoldsOutput = props => {
                             <TableData textAlign={'center'}>Crimps</TableData>
                             <TableData textAlign={'center'}>Slopers</TableData>
                             <TableData textAlign={'center'}>Pinches</TableData>
-                            <TableData textAlign={'center'} background={'#A6C0D2'}>Total</TableData>
+                            <TableData textAlign={'center'} background={'#fff'}>Total</TableData>
                             <TableData textAlign={'center'}>Action</TableData>
                         </TableRow>
                         {holds.map((hold, index) => {
@@ -134,11 +134,11 @@ const HoldsOutput = props => {
                                             <TableData textAlign={'center'}>{hold.crimps}</TableData>
                                             <TableData textAlign={'center'}>{hold.slopers}</TableData>
                                             <TableData textAlign={'center'}>{hold.pinches}</TableData>
-                                            <TableData textAlign={'center'} background={'#A6C0D2'}>{hold.jugs + hold.crimps + hold.slopers + hold.pinches}</TableData>
+                                            <TableData textAlign={'center'} background={'#fff'}>{hold.jugs + hold.crimps + hold.slopers + hold.pinches}</TableData>
                                             <TableData textAlign={'center'} style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
-                                                <ActionSpan background={'#E8E4E1'} onClick={addHandleClick}>+ (add)</ActionSpan>
-                                                <ActionSpan background={'#E8E4E1'} onClick={() => updateHandleClick(index)}>^ (update)</ActionSpan>
-                                                <ActionSpan background={'#D11A2A'} onClick={() => deleteHandleClick(hold._id)}>x (delete)</ActionSpan>
+                                                <ActionSpan background={'#FB9360'} onClick={addHandleClick}>+ (add)</ActionSpan>
+                                                <ActionSpan background={'#FB9360'} onClick={() => updateHandleClick(index)}>^ (update)</ActionSpan>
+                                                <ActionSpan delete background={'#D11A2A'} onClick={() => deleteHandleClick(hold._id)}>x (delete)</ActionSpan>
                                             </TableData>
                                         </>
                                     }

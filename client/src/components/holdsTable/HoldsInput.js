@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { addHolds } from '../../actions/actions';
-import { InputDiv, Text, Table, TableRow, TableData, Input, SubmitButton } from './StylesHoldsInput';
+import { InputDiv, Text, Table, TableRow, TableData, Input, SubmitButton } from './HoldsInput.styled';
 
 const HoldsForm = props => {
     let history = useHistory();
